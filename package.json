@@ -1,0 +1,18 @@
+{
+  "name": "unlock-pdfs",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "cli": "node src/unlock-pdfs.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "unlock-pdfs": "file:"
+  }
+}
