@@ -26,9 +26,6 @@ cd unlock-pdfs
 
 # Install dependencies
 npm install
-
-# (Optional) Install CLI globally
-npm link
 ```
 
 ## package.json Scripts
@@ -38,7 +35,6 @@ You can define a CLI script in your `package.json` for convenience:
 ```json
 {
   "scripts": {
-    "start": "node src/index.js",
     "cli": "node src/unlock-pdfs.js C:/Users/user/Documents/Pdf-files some-password ./unlocked"
   }
 }
