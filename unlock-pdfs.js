@@ -1,29 +1,3 @@
-#!/usr/bin/env node
-/**
- * unlock-pdfs.js (library + CLI)
- * -----------------------------------------------
- * Batch-unlock password-protected PDF files with **qpdf**,
- * reading parameters from CLI args, environment variables, or defaults.
- *
- * ▸ CLI usage:
- *      unlock-pdfs [dir] [password] [outDir]
- *
- * ▸ Env vars:
- *      UNLOCK_DIR       (e.g. C:/Users/user/Documents/PromAi/payslips)
- *      UNLOCK_PASSWORD  (e.g. 5851)
- *      UNLOCK_OUTDIR    (e.g. ./unlocked)
- *
- * Priority: CLI args > Env vars > Hardcoded defaults
- *
- * ▸ Import as module:
- *      import { unlock } from './unlock-pdfs.js';
- *
- * Prerequisites
- * -------------
- *  1. Install qpdf  → https://qpdf.sourceforge.io/
- *  2. chmod +x unlock-pdfs.js   (Linux/macOS)
- */
-
 import { promisify } from 'util';
 import { exec } from 'child_process';
 import fs from 'fs/promises';

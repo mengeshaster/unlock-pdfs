@@ -31,6 +31,26 @@ npm install
 npm link
 ```
 
+## package.json Scripts
+
+You can define a CLI script in your `package.json` for convenience:
+
+```json
+{
+  "scripts": {
+    "start": "node src/index.js",
+    "cli": "node src/unlock-pdfs.js C:/Users/user/Documents/Pdf-files some-password ./unlocked"
+  }
+}
+```
+
+With this, you can run the CLI via npm:
+
+```bash
+npm run cli
+```  
+This invokes the tool with the default parameters shown above.
+
 ## Configuration
 
 Parameters can be provided in three ways, in order of priority:
@@ -41,9 +61,9 @@ Parameters can be provided in three ways, in order of priority:
 
 | Parameter     | CLI arg position | Env var          | Default                                   |
 | ------------- | ---------------- | ---------------- | ----------------------------------------- |
-| Directory     | 1                | UNLOCK\_DIR      | `C:/Users/user/Documents/Pdf-files` |
-| Password      | 2                | UNLOCK\_PASSWORD | `password`                                    |
-| Output folder | 3                | UNLOCK\_OUTDIR   | `./unlocked`                              |
+| Directory     | 1                | UNLOCK_DIR       | `C:/Users/user/Documents/Pdf-files`       |
+| Password      | 2                | UNLOCK_PASSWORD  | `password`                                |
+| Output folder | 3                | UNLOCK_OUTDIR    | `./unlocked`                              |
 
 To use a `.env` file, install and configure [`dotenv`](https://github.com/motdotla/dotenv):
 
@@ -64,17 +84,13 @@ UNLOCK_OUTDIR=./unlocked
 ### CLI Mode
 
 ```bash
-# Using defaults from .env or hardcoded
-unlock-pdfs
+# With npm script (uses defaults)
+npm run cli
 
-# Override with CLI args
+# Using direct CLI invocation
 unlock-pdfs ./my-pdfs mySecretPwd ./output-folder
-```
-
-Or, without linking globally:
-
-```bash
-node src/unlock-pdfs.js [dir] [password] [outDir]
+# or:
+node src/unlock-pdfs.js ./my-pdfs mySecretPwd ./output-folder
 ```
 
 ### As a Module
@@ -96,10 +112,10 @@ import { unlock } from './src/unlock-pdfs.js';
 
 ```bash
 # Environment-based
-UNLOCK_DIR=./pdfs UNLOCK_PASSWORD=1234 node src/unlock-pdfs.js
+env UNLOCK_DIR=./pdfs UNLOCK_PASSWORD=1234 node src/unlock-pdfs.js
 
 # CLI-based
-node src/unlock-pdfs.js ./invoices 98765 ./unlocked_invoices
+node src/unlock-pdfs.js C:/Users/user/Documents/Pdf-files some-password ./unlocked
 ```
 
 ## Error Handling & Logs
@@ -118,4 +134,3 @@ node src/unlock-pdfs.js ./invoices 98765 ./unlocked_invoices
 ## License
 
 MIT © Benny Mengesha
-
